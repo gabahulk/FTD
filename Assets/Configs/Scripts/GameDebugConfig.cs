@@ -6,5 +6,7 @@ namespace Configs.Scripts
    public class GameDebugConfig : ScriptableObject
    {
       public bool DebugAimingBehaviour;
+      public bool DebugCircularSpawner;
+      public bool DebugChaseBehaviour;
    }
 }

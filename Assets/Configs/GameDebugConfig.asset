@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603e853f686fe0a4781e06e18dbd41b8, type: 3}
   m_Name: GameDebugConfig
   m_EditorClassIdentifier: 
-  DebugAimingBehaviour: 1
+  DebugAimingBehaviour: 0
+  DebugCircularSpawner: 0
+  DebugChaseBehaviour: 0

@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    public int Health;
+    public int StartingHealth;
     public HittableBehaviour HittableBehaviour;
-
     public Action Death;
+    public Action<int> HealthUpdate;
+    
+    
+    private int _health;
     private void Awake()
     {
+        _health = StartingHealth;
         HittableBehaviour.Hit += OnHit;
     }
 
@@ -21,8 +25,9 @@ public class HealthComponent : MonoBehaviour
 
     private void OnHit()
     {
-        Health -= 1;
-        if (Health > 0) return;
+        _health -= 1;
+        HealthUpdate?.Invoke(_health);
+        if (_health > 0) return;
         Death?.Invoke();
         Destroy(gameObject);
     }

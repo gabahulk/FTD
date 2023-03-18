@@ -28,10 +28,13 @@ public class CircularSpawner : MonoBehaviour
 
     private void Awake()
     {
-       
+        for (int i = 0; i < 100; i++)
+        {
+            Spawn(Enemy);
+        }
     }
 
-    public void DrawDebugCircle(Vector3 position, float radius)
+    private void DrawDebugCircle(Vector3 position, float radius)
     {
         const int numberOfPoints = 360;
         var lastPoint = new Vector2(radius * Mathf.Cos(0) + position.x, radius * Mathf.Sin(0) + position.y);

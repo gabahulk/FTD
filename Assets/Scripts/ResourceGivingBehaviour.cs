@@ -13,8 +13,10 @@ public class ResourceGivingBehaviour : MonoBehaviour
     private void Awake()
     {
         HealthComponent.Death += GiveResource;
+        PlayerResourcesController =
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerResourcesController>();
     }
-    
+
     private void OnDestroy()
     {
         HealthComponent.Death -= GiveResource;
@@ -22,6 +24,6 @@ public class ResourceGivingBehaviour : MonoBehaviour
 
     private void GiveResource()
     {
-        PlayerResourcesController.AddResource(ResourceType, ResourceQuantity);    
+        PlayerResourcesController.AddResource(ResourceType, ResourceQuantity);
     }
 }

@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 603e853f686fe0a4781e06e18dbd41b8, type: 3}
-  m_Name: GameDebugConfig
+  m_Script: {fileID: 11500000, guid: c4ca6b2e05f4442485411c9016358e92, type: 3}
+  m_Name: Wave01Config
   m_EditorClassIdentifier: 
-  DebugAimingBehaviour: 0
-  DebugCircularSpawner: 1
-  DebugChaseBehaviour: 0
+  EnemiesPrefabs:
+  - {fileID: 9162709671238089044, guid: a4c65e851cc87cf49bccafd142e59262, type: 3}
+  SpawnWeights: 01000000
+  QuantityOfEnemies: 10
+  DelayInSeconds: 0
+  NumberOfDirections: 1

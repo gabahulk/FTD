@@ -24,19 +24,32 @@ public class WaveSpawnerComponent : MonoBehaviour
     public CircularSpawner Spawner;
     public List<WaveConfig> WaveConfigs;
     public int TotalGameTimeInMinutes;
+    public WaveWatcherComponent WatcherComponent;
 
     public Action<WaveStatus> WaveSpawn;
-    public Action<int> WaveDelayStarted;
+    public Action<int, int> WaveDelayStarted;
     
     private int _totalTimeInMilliseconds;
     private int _currentTimeInMilliseconds;
     private int _waveIndex;
+    private bool _waveCleared;
 
     private void Start()
     {
         _totalTimeInMilliseconds = TotalGameTimeInMinutes * 1000 * 60;
         _currentTimeInMilliseconds = 0;
+        WatcherComponent.EnemiesCleared += OnEnemiesCleared;
         HandleWaves().Forget();
+    }
+
+    private void OnDestroy()
+    {
+        WatcherComponent.EnemiesCleared -= OnEnemiesCleared;
+    }
+
+    private void OnEnemiesCleared()
+    {
+        _waveCleared = true;
     }
 
     private async UniTask HandleWaves()
@@ -47,13 +60,14 @@ public class WaveSpawnerComponent : MonoBehaviour
             {
                 _waveIndex = WaveConfigs.Count - 1;
             }
-            WaveDelayStarted?.Invoke(_waveIndex);
+            WaveDelayStarted?.Invoke(_waveIndex, WaveConfigs[_waveIndex].DelayInSeconds * 1000);
             await UniTask.Delay(WaveConfigs[_waveIndex].DelayInSeconds * 1000);
             _currentTimeInMilliseconds += WaveConfigs[_waveIndex].DelayInSeconds * 1000;
             var waveStatus = SpawnWave(WaveConfigs[_waveIndex]);
+            _waveCleared = false;
             WaveSpawn?.Invoke(waveStatus);
-
             _waveIndex++;
+            await UniTask.WaitUntil(() => _waveCleared);
         }
     }
 

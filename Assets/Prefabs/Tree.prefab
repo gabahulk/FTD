@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1523090831251408266}
   - component: {fileID: 1523090831251408267}
   - component: {fileID: 1523090831251408264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf901f5f995079489b41c48c84828e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
+  StartingHealth: 0
   HittableBehaviour: {fileID: 1523090831251408375}
 --- !u!50 &1523090831251408267
 Rigidbody2D:

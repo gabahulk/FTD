@@ -21,6 +21,10 @@ public class EnemiesLeftUIComponent : MonoBehaviour
         WatcherComponent.EnemiesSpawned -= OnEnemiesSpawned;
         WatcherComponent.EnemyDied -= OnEnemyDied;
     }
+    public void ToggleLabel(bool status)
+    {
+        EnemiesLeftLabel.enabled = status;
+    }
     
     private void OnEnemyDied()
     {

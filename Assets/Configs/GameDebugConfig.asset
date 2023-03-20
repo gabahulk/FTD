@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GameDebugConfig
   m_EditorClassIdentifier: 
   DebugAimingBehaviour: 0
-  DebugCircularSpawner: 1
+  DebugCircularSpawner: 0
   DebugChaseBehaviour: 0

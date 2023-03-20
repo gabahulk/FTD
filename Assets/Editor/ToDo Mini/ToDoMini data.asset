@@ -19,9 +19,9 @@ MonoBehaviour:
   - task: Add Wave Timer
     isComplete: 1
   - task: Add Complete Gameflow
-    isComplete: 0
+    isComplete: 1
   - task: Add player death
-    isComplete: 0
+    isComplete: 1
   - task: Add City
     isComplete: 1
   - task: Add Wave Logic

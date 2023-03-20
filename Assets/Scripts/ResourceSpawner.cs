@@ -14,10 +14,13 @@ public class ResourceSpawner : MonoBehaviour
     public Transform Target;
     public Transform Parent;
     public SpriteRenderer TargetSprite;
-
     public Action<Transform> ResourceSpawned;
+
+    private GameManager _gameManager;
+
     private void Awake()
     {
+        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         for (int i = 0; i < 100; i++)
         {
             InstantiateResource();
@@ -27,7 +30,7 @@ public class ResourceSpawner : MonoBehaviour
 
     private async UniTask HandleSpawning()
     {
-        while (true)
+        while (_gameManager.IsGamePlaying)
         {
             await UniTask.Delay(SpawnDelayInMilliseconds);
             var resource = InstantiateResource();

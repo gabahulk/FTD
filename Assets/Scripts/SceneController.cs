@@ -10,4 +10,14 @@ public class SceneController : MonoBehaviour
     {
         await SceneManager.LoadSceneAsync("Game");
     }
+    
+    public async void LoadMainMenu()
+    {
+        await SceneManager.LoadSceneAsync("MainMenu");
+    }
+    
+    public async void LoadGameOver()
+    {
+        await SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Additive);
+    }
 }

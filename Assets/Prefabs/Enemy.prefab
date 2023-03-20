@@ -163,6 +163,7 @@ MonoBehaviour:
   CollisionTags:
   - Weapon
   - Throne
+  - Player
 --- !u!50 &9162709671238089032
 Rigidbody2D:
   serializedVersion: 4

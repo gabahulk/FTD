@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Configs.Scripts;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class CircularSpawner : MonoBehaviour
@@ -36,6 +33,10 @@ public class CircularSpawner : MonoBehaviour
     private void Update()
     {
         if (!GameDebugConfig.DebugCircularSpawner) return;
+        if (ReferenceTransform == null)
+        {
+            return;
+        }
         var position = ReferenceTransform.position;
         DrawDebugCircle(position, InnerRadius);
         DrawDebugCircle(position, OuterRadius);

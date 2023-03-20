@@ -10,7 +10,7 @@ public class WeaponBehaviour : MonoBehaviour
     public GameObject HitBox;
     public int HitTimeInMilliseconds;
     public int HitCooldownInMilliseconds;
-
+    private GameManager _gameManager;
     private bool _isAnimating = false;
 
     private void Awake()
@@ -21,6 +21,7 @@ public class WeaponBehaviour : MonoBehaviour
     public async void Attack(InputAction.CallbackContext value)
     {
         if (_isAnimating) return;
+        if (!_gameManager.IsGamePlaying) return;
         
         HitBox.SetActive(true);
         _isAnimating = true;

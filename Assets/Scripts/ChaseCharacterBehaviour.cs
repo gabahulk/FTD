@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Configs.Scripts;
 using UnityEngine;
 
@@ -23,6 +21,10 @@ public class ChaseCharacterBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (_transform == null || _player==null || _throne==null)
+        {
+            return;
+        }
         CurrentTarget = GetCurrentTarget();
         Move((CurrentTarget.position - transform.position).normalized);
     }
